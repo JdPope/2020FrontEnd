@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-
-import './App.css'
-
+import GoogleMapReact from 'google-map-react';
+import MapContainer from './MapContainer'
 export default class App extends Component {
 
 constructor(props){
@@ -20,13 +19,18 @@ componentDidMount(){
 
 }
 
+displayMarkers(){
+
+
+}
+
 render(){
   return(
 
     <div>
       <h1>Dog TEST For President 2020</h1>
-      <h2>let's get some markers{this.state.markers.id}{console.log(this.state.markers)}</h2>
-
+      <h2>let's get some markers{this.state.markers.id}{console.log("test", this.state.markers)}</h2>
+      <MapContainer/>
 
     </div>
 
