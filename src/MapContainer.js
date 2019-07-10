@@ -1,38 +1,35 @@
 import React, {Component} from 'react';
-import GoogleMapReact from 'google-map-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
-const MyMarker = ({ text }) => <div>{text}</div>;
+const mapStyles = {
+  width: '100%',
+  height: '100%',
+};
+export class MapContainer extends Component {
 
+  displayMarkers = (props) => {
+    return this.props.markers.map((marker, index) => {
+      return <Marker key={index} id={index} position={{
+       lat: marker.latitude,
+       lng: marker.longitude
+     }}
+     onClick={() => console.log("You clicked me!")} />
+    })
+  }
 
-class MapContainer extends Component {
-    static defaultProps ={
-      center:{
-        lat:39.742043,
-        lng:-104.991531
-      },
-      zoom:11
-    }
-
-
-
-
-    render(){
-      return(
-        <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+  render() {
+    return (
+        <Map
+          google={this.props.google}
+          zoom={8}
+          style={mapStyles}
+          initialCenter={{ lat: 47.444, lng: -122.176}}
         >
-        <MyMarker
-            lat={39.742043}
-            lng={-104.991531}
-            text="Yo"
-          />
-        </GoogleMapReact>
-        </div>
-      )
-    }
+          {this.displayMarkers()}
+        </Map>
+    );
+  }
 }
-
-export default MapContainer
+export default GoogleApiWrapper({
+  apiKey: //*{your api key here}*
+})(MapContainer);

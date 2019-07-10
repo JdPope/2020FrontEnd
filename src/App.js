@@ -30,7 +30,7 @@ render(){
     <div>
       <h1>Dog TEST For President 2020</h1>
       <h2>let's get some markers{this.state.markers.id}{console.log("test", this.state.markers)}</h2>
-      <MapContainer/>
+      <MapContainer markers={this.state.markers}/>
     </div>
   )
 }
