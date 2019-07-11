@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router,Link } from 'react-router-dom'
 import './Navbar.css'
 import ToggleButton from '../ToggleButton/ToggleButton'
 
@@ -15,7 +16,7 @@ return(
       <div className="Navbar_items">
         <ul>
           <li><a href="/">Dogs</a></li>
-          <li><a href="/">+ Marker</a></li>
+          <li><Link to={'/NewMarker'} className="nav-link">+New Marker</Link></li>
         </ul>
       </div>
     </nav>

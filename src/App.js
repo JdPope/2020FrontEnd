@@ -5,6 +5,8 @@ import Navbar from './Navbar/Navbar'
 import SideDrawer from './SideDrawer/SideDrawer'
 import Backdrop from './Backdrop/Backdrop'
 import AddNewMarker from './AddNewMarker/AddNewMarker'
+import {BrowserRouter as Router, Route,Link } from 'react-router-dom'
+
 const url = 'https://lit-cliffs-51825.herokuapp.com/markers'
 
 export default class App extends Component {
@@ -57,17 +59,18 @@ render(){
     backdrop =   <Backdrop click={this.backdropClickHandler}/>
   }
   return(
+    <Router>
     <div style={{height:'100vh'}}>
       <Navbar drawerClickHandler={this.drawerToggleClickHandler}/>
       {sideDrawer}
       {backdrop}
       <main style={{marginTop:'80px'}}>
-         <AddNewMarker addMarker={this.addMarker} />
+        <Route exact path="/NewMarker" render={(props)=> <AddNewMarker {...props} addMarker={this.addMarker} /> }/>
+
         <MapContainer markers={this.state.markers}/>
       </main>
-
-
     </div>
+    </Router>
   )
 }
 }
