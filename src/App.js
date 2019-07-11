@@ -1,15 +1,28 @@
-import React, {Component} from 'react';
-import GoogleMapReact from 'google-map-react';
+import React, {Component} from 'react'
+import GoogleMapReact from 'google-map-react'
 import MapContainer from './MapContainer'
+import Navbar from './Navbar/Navbar'
+import SideDrawer from './SideDrawer/SideDrawer'
+import Backdrop from './Backdrop/Backdrop'
 export default class App extends Component {
 
 constructor(props){
   super(props)
   this.state = {
-
+    sideDrawerOpen: false,
     markers: []
   }
 }
+drawerToggleClickHandler = () =>{
+  this.setState((prevState) => {
+    return {sideDrawerOpen: !prevState.sideDrawerOpen}
+  })
+}
+
+backdropClickHandler = () => {
+  this.setState({sideDrawerOpen: false})
+}
+
 
 componentDidMount(){
   let url = 'https://lit-cliffs-51825.herokuapp.com/markers'
@@ -25,12 +38,23 @@ displayMarkers(){
 }
 
 render(){
-  return(
+  let sideDrawer;
+  let backdrop;
 
-    <div>
-      <h1>Dog TEST For President 2020</h1>
-      <h2>let's get some markers{this.state.markers.id}{console.log("test", this.state.markers)}</h2>
-      <MapContainer markers={this.state.markers}/>
+  if (this.state.sideDrawerOpen){
+    sideDrawer = <SideDrawer/>
+    backdrop =   <Backdrop click={this.backdropClickHandler}/>
+  }
+  return(
+    <div style={{height:'100vh'}}>
+      <Navbar drawerClickHandler={this.drawerToggleClickHandler}/>
+      {sideDrawer}
+      {backdrop}
+      <main style={{marginTop:'80px'}}>
+        <MapContainer markers={this.state.markers}/>
+      </main>
+
+
     </div>
   )
 }
