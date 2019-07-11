@@ -4,6 +4,9 @@ import MapContainer from './MapContainer'
 import Navbar from './Navbar/Navbar'
 import SideDrawer from './SideDrawer/SideDrawer'
 import Backdrop from './Backdrop/Backdrop'
+import AddNewMarker from './AddNewMarker/AddNewMarker'
+const url = 'https://lit-cliffs-51825.herokuapp.com/markers'
+
 export default class App extends Component {
 
 constructor(props){
@@ -25,17 +28,25 @@ backdropClickHandler = () => {
 
 
 componentDidMount(){
-  let url = 'https://lit-cliffs-51825.herokuapp.com/markers'
   fetch(url)
     .then(response => response.json())
     .then(result => this.setState({markers: result}))
 
 }
 
-displayMarkers(){
-
-
-}
+addMarker = newMarker => {
+       this.setState(state => {
+           state.markers = [...this.state.markers, newMarker]
+           return state
+       })
+       fetch(url, {
+           method: "POST",
+           headers: {
+               "Content-Type": "application/json",
+           },
+           body: JSON.stringify(newMarker)
+       }).catch(error => console.error(error.message))
+   }
 
 render(){
   let sideDrawer;
@@ -51,6 +62,7 @@ render(){
       {sideDrawer}
       {backdrop}
       <main style={{marginTop:'80px'}}>
+         <AddNewMarker addMarker={this.addMarker} />
         <MapContainer markers={this.state.markers}/>
       </main>
 

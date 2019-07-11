@@ -14,8 +14,8 @@ return(
       <div className="spacer"/>
       <div className="Navbar_items">
         <ul>
-          <li><a href="/">Products</a></li>
-          <li><a href="/">Users</a></li>
+          <li><a href="/">Dogs</a></li>
+          <li><a href="/">+ Marker</a></li>
         </ul>
       </div>
     </nav>
