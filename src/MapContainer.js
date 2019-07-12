@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 
 const mapStyles = {
   width: '100%',
@@ -7,18 +8,38 @@ const mapStyles = {
 };
 export class MapContainer extends Component {
 
+    state = {
+      redirect: false
+    }
+    setRedirect = (e) => {
+      console.log("event", e.target)
+      // const value = event.target.id
+      // console.log("click")
+      this.setState({
+        redirect: true,
+        // currentId: value
+      })
+    }
+    renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/EditDeleteMarker' />
+      }
+    }
+
   displayMarkers = (props) => {
     return this.props.markers.map((marker, index) => {
       return <Marker key={index} id={index} position={{
        lat: marker.latitude,
        lng: marker.longitude
      }}
-     onClick={() => console.log("You clicked me!")} />
+     onClick={this.setRedirect} />
     })
   }
 
   render() {
     return (
+      <div>
+        {this.renderRedirect()}
         <Map
           google={this.props.google}
           zoom={8}
@@ -27,9 +48,10 @@ export class MapContainer extends Component {
         >
           {this.displayMarkers()}
         </Map>
+      </div>
     );
   }
 }
 export default GoogleApiWrapper({
-  apiKey://*{your api key here}*
+  apiKey: 'AIzaSyAzb3Vqvy9v6RS1J_1CxlO0cdfyhJGfmoQ'
 })(MapContainer);

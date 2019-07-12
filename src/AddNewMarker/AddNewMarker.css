@@ -1,7 +1,7 @@
-.formheading{
+.add-Marker{
   color: #C03221;
   margin: .5rem 0;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   text-align:center;
 
   height: 10%;
@@ -10,6 +10,6 @@
   /* position: fixed; */
   top: 5;
   left: 0;
-  Width: 70%;
-  max-width: 400px;
+  Width: 100%;
+  max-width: 1500px;
 }

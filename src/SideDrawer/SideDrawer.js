@@ -7,7 +7,7 @@ const SideDrawer = props => {
   return(
     <nav className="side-drawer">
       <ul>
-        <li><Link to={'/NewMarker'} className="nav-link">+New Marker</Link></li>
+        <li><Link to={'/AddNewMarker'} className="nav-link">+New Marker</Link></li>
         <li><a href="/">Dogs</a></li>
       </ul>
     </nav>

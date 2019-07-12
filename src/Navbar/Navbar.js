@@ -16,7 +16,7 @@ return(
       <div className="Navbar_items">
         <ul>
           <li><a href="/">Dogs</a></li>
-          <li><Link to={'/NewMarker'} className="nav-link">+New Marker</Link></li>
+          <li><Link to={'/AddNewMarker'} className="nav-link">+New Marker</Link></li>
         </ul>
       </div>
     </nav>

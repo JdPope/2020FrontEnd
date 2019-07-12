@@ -5,6 +5,7 @@ import Navbar from './Navbar/Navbar'
 import SideDrawer from './SideDrawer/SideDrawer'
 import Backdrop from './Backdrop/Backdrop'
 import AddNewMarker from './AddNewMarker/AddNewMarker'
+import EditDeleteMarker from './EditDeleteMarker/EditDeleteMarker'
 import {BrowserRouter as Router, Route,Link } from 'react-router-dom'
 
 const url = 'https://lit-cliffs-51825.herokuapp.com/markers'
@@ -36,6 +37,17 @@ componentDidMount(){
 
 }
 
+editMarker = (marker) => {
+          fetch(`http://localhost:3000/beers/${marker.id}`, {
+              method: 'PATCH',
+              headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify(marker)
+            })
+          }
+
 addMarker = newMarker => {
   console.log(newMarker)
        this.setState(state => {
@@ -66,8 +78,8 @@ render(){
       {sideDrawer}
       {backdrop}
       <main style={{marginTop:'80px'}}>
-        <Route exact path="/NewMarker" render={(props)=> <AddNewMarker {...props} addMarker={this.addMarker} /> }/>
-
+        <Route exact path="/AddNewMarker" render={(props)=> <AddNewMarker {...props} addMarker={this.addMarker} /> }/>
+        <Route exact path="/EditDeleteMarker" render={(props)=><EditDeleteMarker {...props} markers={this.state.markers} editMarker={this.editMarker}/>}/>
         <MapContainer markers={this.state.markers}/>
       </main>
     </div>
