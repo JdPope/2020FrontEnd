@@ -1,0 +1,15 @@
+.formheading{
+  color: #C03221;
+  margin: .5rem 0;
+  font-size: 1.7rem;
+  text-align:center;
+
+  height: 10%;
+  background: white;
+  box-shadow: .5px 0px 5px rgba(0, 0, 0, 0.5);
+  /* position: fixed; */
+  top: 5;
+  left: 0;
+  Width: 70%;
+  max-width: 400px;
+}

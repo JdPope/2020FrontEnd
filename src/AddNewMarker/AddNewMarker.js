@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './AddNewMarker.css'
 
 export default class AddNewMarker extends Component {
     state = {
@@ -6,7 +7,7 @@ export default class AddNewMarker extends Component {
         latitude:"",
         longitude: "",
         image_url: "",
-        dog_id:2
+        dog_id:""
       }
     }
 
@@ -41,16 +42,16 @@ export default class AddNewMarker extends Component {
   render (){
     return(
       <form onSubmit={this.addMarker} className="add-Marker">
-          <h2>Add New Marker</h2>
+          <h2 className="formheading">Add New Marker</h2>
           <input onChange={this.updateMarkerForm} name="latitude" type="float" required placeholder="latitude" value={this.state.newMarkerForm.latitude} />
           <input onChange={this.updateMarkerForm} name="longitude" type="float" required placeholder="longitude" value={this.state.newMarkerForm.longitude} />
           <input onChange={this.updateMarkerForm} name="image_url" type="text" required placeholder= "image url" value={this.state.newMarkerForm.image_url} >
           </input>
-          <select onChange={this.updateMarkerForm} name="dog_id" required value={this.state.newMarkerForm.dog_id} >
+          <select onChange={this.updateMarkerForm} name="dog_id" type="integer" required value={this.state.newMarkerForm.dog_id} >
                     <option disabled>Please select a Dog</option>
-                    <option value="2">Wiggley F. Buckley</option>
-                    <option value="3">Mo'Bitin'</option>
-                    <option value="4">Frankie</option>
+                    <option value="4">Wiggley F. Buckley</option>
+                    <option value="5">Mo'Bitin'</option>
+                    <option value="6">Frankie</option>
                 </select>
 
           <input type="submit" value="Add" />

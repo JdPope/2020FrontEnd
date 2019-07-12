@@ -11,7 +11,7 @@ return(
       <div>
         <ToggleButton click={props.drawerClickHandler}/>
       </div>
-      <div className="Navbar_logo"><a href="/">The Pee-sidential Race 2020</a></div>
+      <div className="Navbar_logo"><a href="/">Pee-sidential Race 2020</a></div>
       <div className="spacer"/>
       <div className="Navbar_items">
         <ul>
