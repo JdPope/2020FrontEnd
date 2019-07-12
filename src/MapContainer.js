@@ -11,8 +11,9 @@ export class MapContainer extends Component {
     state = {
       redirect: false
     }
-    setRedirect = (e) => {
-      console.log("event", e.target)
+    setRedirect = (event, index) => {
+      console.log("index", index)
+
       // const value = event.target.id
       // console.log("click")
       this.setState({
@@ -27,13 +28,15 @@ export class MapContainer extends Component {
     }
 
   displayMarkers = (props) => {
+
     return this.props.markers.map((marker, index) => {
-      return <Marker key={index} id={index} position={{
+      return <Marker key={index} id={marker.id} position={{
        lat: marker.latitude,
        lng: marker.longitude
      }}
-     onClick={this.setRedirect} />
+     onClick={(e) => this.setRedirect(e, index = marker.id)} />
     })
+
   }
 
   render() {
@@ -53,5 +56,5 @@ export class MapContainer extends Component {
   }
 }
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAzb3Vqvy9v6RS1J_1CxlO0cdfyhJGfmoQ'
+  apiKey: 	//*{your api key here}*
 })(MapContainer);
