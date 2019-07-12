@@ -16,7 +16,8 @@ constructor(props){
   super(props)
   this.state = {
     sideDrawerOpen: false,
-    markers: []
+    markers: [],
+    currentId: -1
   }
 }
 drawerToggleClickHandler = () =>{
@@ -29,6 +30,11 @@ backdropClickHandler = () => {
   this.setState({sideDrawerOpen: false})
 }
 
+idClickhandler = (event, index) =>{
+  console.log("index", index)
+  this.setState({currentId:index})
+}
+
 
 componentDidMount(){
   fetch(url)
@@ -37,8 +43,24 @@ componentDidMount(){
 
 }
 
+
+deleteMarker = (type, id) => {
+    const newState = this.state[type].filter((object) => object.id !== id)
+    this.setState({[type]: newState})
+const body = this.state.currentId
+fetch(`https://lit-cliffs-51825.herokuapp.com/markers/${this.state.currentId}`,{
+  method: "DELETE",
+  headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body)
+  })
+  .catch(error => (console.error(error.message)))
+}
+
+
 editMarker = (marker) => {
-          fetch(`http://localhost:3000/beers/${marker.id}`, {
+          fetch(`https://lit-cliffs-51825.herokuapp.com/markers/${this.state.currentId}`, {
               method: 'PATCH',
               headers: {
                 "Content-Type": "application/json",
@@ -79,8 +101,8 @@ render(){
       {backdrop}
       <main style={{marginTop:'80px'}}>
         <Route exact path="/AddNewMarker" render={(props)=> <AddNewMarker {...props} addMarker={this.addMarker} /> }/>
-        <Route exact path="/EditDeleteMarker" render={(props)=><EditDeleteMarker {...props} markers={this.state.markers} editMarker={this.editMarker}/>}/>
-        <MapContainer markers={this.state.markers}/>
+        <Route exact path="/EditDeleteMarker" render={(props)=><EditDeleteMarker {...props} markers={this.state.markers}  currentId={this.state.currentId} deleteMarker={this.deleteMarker} editMarker={this.editMarker}/>}/>
+        <MapContainer markers={this.state.markers} idClickhandler={this.idClickhandler}/>
       </main>
     </div>
     </Router>

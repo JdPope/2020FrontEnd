@@ -11,14 +11,9 @@ export class MapContainer extends Component {
     state = {
       redirect: false
     }
-    setRedirect = (event, index) => {
-      console.log("index", index)
-
-      // const value = event.target.id
-      // console.log("click")
+    setRedirect = (event) => {
       this.setState({
-        redirect: true,
-        // currentId: value
+        redirect: true
       })
     }
     renderRedirect = () => {
@@ -34,7 +29,8 @@ export class MapContainer extends Component {
        lat: marker.latitude,
        lng: marker.longitude
      }}
-     onClick={(e) => this.setRedirect(e, index = marker.id)} />
+     onClick={(e) => {this.setRedirect(e);
+       this.props.idClickhandler(e, index = marker.id)}} />
     })
 
   }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import './EditDeleteMarker.css'
 
 export default class EditDeleteMarker extends Component {
   constructor (props) {
@@ -8,8 +8,7 @@ export default class EditDeleteMarker extends Component {
       latitude:props.latitude,
       longitude:props.longitude,
       image_url:props.image_url,
-      dog_id:props.dog_id,
-
+      dog_id:props.dog_id
     }
   }
 
@@ -20,6 +19,11 @@ export default class EditDeleteMarker extends Component {
     })
   }
 
+  handleDelete = (event) => {
+    event.preventDefault()
+    this.props.deleteMarker()
+  }
+
   handleSubmit = (event) => {
     console.log(event);
     event.preventDefault()
@@ -28,13 +32,15 @@ export default class EditDeleteMarker extends Component {
 
   }
 
+
+
   render(props){
-    console.log("props", this.props.markers)
+    console.log("props", this.props.currentId)
     return(
 
-      <form onSubmit={this.handleSubmit} className="add-Marker">
+      <form onSubmit={this.handleSubmit} className="Edit-Marker">
           <h2 className="formheading">Edit Marker</h2>
-          <input onChange={this.handleChange} name="latitude" type="float" required placeholder={this.props} value={this.state.latitude} />
+          <input onChange={this.handleChange} name="latitude" type="float" required placeholder="latitude" value={this.state.latitude} />
           <input onChange={this.handleChange} name="longitude" type="float" required placeholder="longitude" value={this.state.longitude} />
           <input onChange={this.handleChange} name="image_url" type="text" required placeholder= "image url" value={this.state.image_url} >
           </input>
@@ -46,6 +52,7 @@ export default class EditDeleteMarker extends Component {
                 </select>
 
           <input type="submit" value="Submit" />
+          <button onClick={this.handleDelete}>Delete</button>
       </form>
 
 
