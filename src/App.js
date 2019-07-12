@@ -37,6 +37,7 @@ componentDidMount(){
 }
 
 addMarker = newMarker => {
+  console.log(newMarker)
        this.setState(state => {
            state.markers = [...this.state.markers, newMarker]
            return state

@@ -6,9 +6,7 @@ export default class AddNewMarker extends Component {
         latitude:"",
         longitude: "",
         image_url: "",
-        dog: {
-          name: ""
-        }
+        dog_id:2
       }
     }
 
@@ -27,7 +25,7 @@ export default class AddNewMarker extends Component {
         latitude: this.state.newMarkerForm.latitude,
         longitude: this.state.newMarkerForm.longitude,
         image_url: this.state.newMarkerForm.image_url,
-        dog: this.state.newMarkerForm.dog
+        dog_id: this.state.newMarkerForm.dog_id
       }
       this.props.addMarker(newMarker)
       this.setState({
@@ -35,7 +33,7 @@ export default class AddNewMarker extends Component {
           latitude:"",
           longitude: "",
           image_url: "",
-          dog: ""
+          dog_id:""
         }
       })
     }
@@ -46,9 +44,15 @@ export default class AddNewMarker extends Component {
           <h2>Add New Marker</h2>
           <input onChange={this.updateMarkerForm} name="latitude" type="float" required placeholder="latitude" value={this.state.newMarkerForm.latitude} />
           <input onChange={this.updateMarkerForm} name="longitude" type="float" required placeholder="longitude" value={this.state.newMarkerForm.longitude} />
-          <input onChange={this.updateMarkerForm} name="dog" type="text" required placeholder="dog name" value={this.state.newMarkerForm.dog}/>
           <input onChange={this.updateMarkerForm} name="image_url" type="text" required placeholder= "image url" value={this.state.newMarkerForm.image_url} >
           </input>
+          <select onChange={this.updateMarkerForm} name="dog_id" required value={this.state.newMarkerForm.dog_id} >
+                    <option disabled>Please select a Dog</option>
+                    <option value="2">Wiggley F. Buckley</option>
+                    <option value="3">Mo'Bitin'</option>
+                    <option value="4">Frankie</option>
+                </select>
+
           <input type="submit" value="Add" />
       </form>
 
