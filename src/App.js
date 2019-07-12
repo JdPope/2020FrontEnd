@@ -44,18 +44,11 @@ componentDidMount(){
 }
 
 
-deleteMarker = (type, id) => {
-    const newState = this.state[type].filter((object) => object.id !== id)
-    this.setState({[type]: newState})
-const body = this.state.currentId
+deleteMarker = () => {
+  const filteredMarkers = this.state.markers.filter(marker => marker.id !=this.state.currentId)
+  this.setState({markers:filteredMarkers})
 fetch(`https://lit-cliffs-51825.herokuapp.com/markers/${this.state.currentId}`,{
-  method: "DELETE",
-  headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body)
-  })
-  .catch(error => (console.error(error.message)))
+  method: "DELETE"})
 }
 
 
