@@ -9,7 +9,7 @@
 
 ## Screenshot 📷
 
-![Alt text](./screenshot/screenshot.png?raw=true "Clean Angular Blog")
+![Alt text](./ScreenShot2019-07-28at9.23.04PM.png)
 
 # Built with 🔧
 
