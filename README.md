@@ -8,7 +8,7 @@
 [Click here for the demo!](https://dogpresident2020.firebaseapp.com/)
 
 ## Screenshot 📷
-![Alt text](./screenshot.png?raw=true "Pee-sidential Race)
+![Alt text](screenshot.png?raw=true "Pee-sidential Race)
 
 # Built with 🔧
 
