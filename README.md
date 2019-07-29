@@ -7,8 +7,9 @@
 
 [Click here for the demo!](https://dogpresident2020.firebaseapp.com/)
 
-## Screenshot 📷
-![Alt text](./screenshot.png?raw=true "Clean Angular Blog")
+## Screenshots 📷
+
+![Alt text](./screenshot.png?raw=true "add new")
 
 # Built with 🔧
 
