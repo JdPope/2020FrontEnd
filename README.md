@@ -8,8 +8,10 @@
 [Click here for the demo!](https://dogpresident2020.firebaseapp.com/)
 
 ## Screenshots 📷
-
+![Alt text](./screenshot1.png?raw=true "login")
+![Alt text](./screenshot2.png?raw=true "sidebar")
 ![Alt text](./screenshot.png?raw=true "add new")
+![Alt text](./screenshot4.png?raw=true "edit/delete")
 
 # Built with 🔧
 
